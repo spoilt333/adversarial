@@ -17,7 +17,7 @@ RUN apt-get install -y curl grep sed dpkg
 
 ENV PATH /opt/conda/bin:$PATH
 
-RUN conda install pytorch torchvision cuda80 -c pytorch
+RUN conda install pytorch torchvision cuda90 -c pytorch
 
 RUN conda install ipython numpy pandas scikit-learn notebook matplotlib
 
@@ -36,7 +36,6 @@ WORKDIR /home/playground
 CMD [ "/bin/bash" ]
 
 COPY utils.py /home/playground/
-COPY mnist.ipynb /home/playground/
-COPY mnist-basic.ipynb /home/playground/
+COPY conv_fader_mnist.ipynb /home/playground/
 
 ENTRYPOINT jupyter notebook --allow-root --no-browser --port 8765 --ip '*'
